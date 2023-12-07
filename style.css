@@ -26,9 +26,10 @@ a {
     text-decoration: none;
 }
 
-p {
+.font {
     font-family: Monaco, monospace, 'Courier New', Courier, monospace;
 }
+
 
 .navbar {
     display: flex;
@@ -81,8 +82,3 @@ p {
     font-family: Monaco, monospace, 'Courier New', Courier, monospace;
 }
 
-
-.page-content {
-    font-family: Monaco, monospace, 'Courier New', Courier, monospace;
-    
-}

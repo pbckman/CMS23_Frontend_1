@@ -4,6 +4,14 @@
     <meta charset="UTF-8" />
     <title>TrallRäknaren</title>
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        .img-material-option {
+            width: 200px;
+            height: auto;
+        }
+
+    </style>
 </head>
 <body>
     <div class="navbar">
@@ -27,22 +35,33 @@
       </div>
 
 
-        <h1>TrallRäknaren</h1>
+        <h1 class="font">TrallRäknaren</h1>
         <div class="calc-rekt">
-            <p>Här fyller du i dina mått om du vill ha en rektangulär altan</p>
+            <p class="font">Här fyller du i dina mått om du vill ha en rektangulär altan</p>
             <img src="trall_altan_1.png" alt="">
-        <label for="length">Längd:</label>
-        <input type="number" id="length" placeholder="Ange längd">
+        <label for="length">A:</label>
+        <input type="number" id="length" placeholder="Ange längd (m)">
     
-        <label for="width">Bredd:</label>
-        <input type="number" id="width" placeholder="Ange bredd">
+        <label for="width">B:</label>
+        <input type="number" id="width" placeholder="Ange bredd (m)">
     
         <label for="material">Material:</label>
-        <select id="material">
-            <option value="trä">Trä</option>
-            <option value="trä1">Trä1</option>
+        <div id="materialImages">
+            <img class="img-material-option" src="Bilder\tra1.jpg" alt="Tryckimpregnerad trall" onclick="selectMaterial('trä1')">
+            <img class="img-material-option" src="Bilder\tra2.jpg" alt="Trall brun VB NTR" onclick="selectMaterial('trä2')">
+            <img class="img-material-option" src="Bilder\tra3.jpg" alt="Bangkirai trall 21x145mm" onclick="selectMaterial('trä3')">
+            <img class="img-material-option" src="Bilder\tra4.jpg" alt="Bangkirai trall 45x145mm" onclick="selectMaterial('trä4')">
+        </div>
+
+        <input type="hidden" id="selectedMaterial" value="trä1">
+
+        <script>
+            function selectMaterial(material) {
+                document.getElementById('selectedMaterial').value = material;
+            }
+
             
-        </select>
+        </script>
     
         <button onclick="calculateCost()">Beräkna kostnad</button>
     
@@ -50,26 +69,29 @@
       </div>
 
       <div class="calc-L">
-        <p>Här fyller du i dina mått om du vill ha en L-formad altan som t.ex. går runt ditt hus</p>
+        <p class="font">Här fyller du i dina mått om du vill ha en L-formad altan som t.ex. går runt ditt hus</p>
         <img src="trall_altan_2.png" alt="">
-        <label for="lengthA">A(längd):</label>
-        <input type="number" id="lengthA" placeholder="Ange längd">
+        <label for="lengthA">A:</label>
+        <input type="number" id="lengthA" placeholder="Ange längd (m)">
     
-        <label for="widthA">(A)Bredd:</label>
-        <input type="number" id="widthA" placeholder="Ange bredd">
+        <label for="widthA">B:</label>
+        <input type="number" id="widthA" placeholder="Ange bredd (m)">
 
-        <label for="lengthB">(B)Längd:</label>
-        <input type="number" id="lengthB" placeholder="Ange längd">
+        <label for="lengthB">C:</label>
+        <input type="number" id="lengthB" placeholder="Ange längd (m)">
     
-        <label for="widthB">(A)Bredd:</label>
-        <input type="number" id="widthB" placeholder="Ange bredd">
+        <label for="widthB">D:</label>
+        <input type="number" id="widthB" placeholder="Ange bredd (m)">
     
         <label for="materialL">Material:</label>
-        <select id="materialL">
-            <option value="trä">Trä</option>
-            <option value="trä1">Trä1</option>
-            
-        </select>
+        <div id="materialImages">
+            <img class="img-material-option" src="Bilder\tra1.jpg" alt="Tryckimpregnerad trall" onclick="selectMaterial('trä1')">
+            <img class="img-material-option" src="Bilder\tra2.jpg" alt="Trall brun VB NTR" onclick="selectMaterial('trä2')">
+            <img class="img-material-option" src="Bilder\tra3.jpg" alt="Bangkirai trall 21x145mm" onclick="selectMaterial('trä3')">
+            <img class="img-material-option" src="Bilder\tra4.jpg" alt="Bangkirai trall 45x145mm" onclick="selectMaterial('trä4')">
+        </div>
+
+        <input type="hidden" id="selectedMaterial" value="trä1">
     
         <button onclick="calculateCostL()">Beräkna kostnad</button>
     
