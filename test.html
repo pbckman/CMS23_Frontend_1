@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trallräknare</title>
+    <style>
+        /* Din CSS-styling här */
+        .font-color {
+            color: black;
+            background-color: black;
+        }
+
+        .material-info {
+            display: none;
+        }
+
+        .shape-image {
+            cursor: pointer;
+            max-width: 100px; /* Justera storleken efter behov */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Trallräknare</h1>
+
+    <form id="trallForm">
+        <label for="shape">Välj form:</label>
+
+        <!-- Använd bilder för att representera form och lägg till en onclick-event för att välja form -->
+        <img src="trall_altan_1.png" alt="Rektangulär" class="shape-image" onclick="selectShape('rectangle')">
+        <img src="trall_altan_2.png" alt="L-formad" class="shape-image" onclick="selectShape('l-shape')">
+        <!-- Lägg till fler formbilder om det behövs -->
+
+        <div id="rectangleInputs">
+            <label for="lengthA">Längd A:</label>
+            <input type="number" id="lengthA" required>
+
+            <label for="widthB">Bredd B:</label>
+            <input type="number" id="widthB" required>
+        </div>
+
+        <div id="lShapeInputs" style="display:none;">
+            <label for="lengthA">Längd A:</label>
+            <input type="number" id="lengthC" required>
+
+            <label for="widthB">Bredd B:</label>
+            <input type="number" id="widthD" required>
+
+            <label for="lengthC">Längd C:</label>
+            <input type="number" id="lengthC" required>
+
+            <label for="widthD">Bredd D:</label>
+            <input type="number" id="widthD" required>
+        </div>
+
+        <label for="material">Välj material:</label>
+
+        <!-- Använd bilder för att representera material och lägg till en onclick-event för att visa mer information -->
+        <img src="Bilder\tra1.jpg" alt="Trä" class="material-image" onclick="showMaterialInfo('trä')">
+        <img src="Bilder\tra2.jpg" alt="Komposit" class="material-image" onclick="showMaterialInfo('komposit')">
+        <!-- Lägg till fler materialbilder om det behövs -->
+
+        <div id="materialInfo" class="material-info">
+            <!-- Information om materialet visas här när användaren klickar på bilden -->
+            <p class="font-color" id="träInfo">Trä är ett naturligt material med värme och karaktär. Det kräver regelbunden underhåll.</p>
+            <p class="font-color" id="kompositInfo">Komposit är ett hållbart och underhållsfritt material som passar bra för altaner.</p>
+            <!-- Lägg till mer information om andra material om det behövs -->
+        </div>
+
+        <input type="hidden" id="shapeInput" name="shape">
+        <input type="hidden" id="material" name="material">
+
+        <button type="button" onclick="calculatePrice()">Beräkna pris</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        function selectShape(shape) {
+            var rectangleInputs = document.getElementById("rectangleInputs");
+            var lShapeInputs = document.getElementById("lShapeInputs");
+
+            if (shape === "rectangle") {
+                rectangleInputs.style.display = "block";
+                lShapeInputs.style.display = "none";
+            } else if (shape === "l-shape") {
+                rectangleInputs.style.display = "none";
+                lShapeInputs.style.display = "block";
+            }
+
+            // Sätt det valda materialet i det dolda input-fältet
+            document.getElementById("shapeInput").value = shape;
+        }
+
+        function showMaterialInfo(material) {
+            // Göm all information om material
+            var materialInfoElements = document.querySelectorAll(".material-info");
+            for (var i = 0; i < materialInfoElements.length; i++) {
+                materialInfoElements[i].style.display = "none";
+            }
+
+            // Visa information om det valda materialet
+            var materialInfo = document.getElementById(material + "Info");
+            if (materialInfo) {
+                materialInfo.style.display = "block";
+            }
+
+            // Sätt det valda materialet i det dolda input-fältet
+            document.getElementById("material").value = material;
+        }
+
+        function calculatePrice() {
+            var shape = document.getElementById("shapeInput").value;
+            var lengthA = parseFloat(document.getElementById("lengthA").value);
+            var widthB = parseFloat(document.getElementById("widthB").value);
+            var lengthC = parseFloat(document.getElementById("lengthC").value);
+            var widthD = parseFloat(document.getElementById("widthD").value);
+            var material = document.getElementById("material").value;
+
+            var area;
+
+            if (shape === "rectangle") {
+                area = lengthA * widthB;
+            } else if (shape === "l-shape") {
+                area = lengthC * widthD + lengthA * widthB;
+            }
+
+            var price;
+
+            // Lägg till prislogik baserat på materialet
+            if (material === "trä") {
+                price = area * 100; // Exempelpris, justera efter behov
+            } else if (material === "komposit") {
+                price = area * 150; // Exempelpris, justera efter behov
+            }
+
+            // Visa resultatet
+            var resultDiv = document.getElementById("result");
+            resultDiv.innerHTML = "<p>Altanens area: " + area.toFixed(2) + " kvadratmeter</p>" +
+                                  "<p>Pris: " + price.toFixed(2) + " kr</p>";
+        }
+    </script>
+
+</body>
+</html>
