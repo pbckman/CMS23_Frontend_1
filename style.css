@@ -17,11 +17,6 @@ body {
     bottom: 0;
 }
 
-.selected {
-    border: 2px solid #3498db;
-    box-sizing: border-box;
-}
-
 a {
     text-transform: uppercase;
     font-family: Monaco, monospace, 'Courier New', Courier, monospace;
@@ -155,4 +150,25 @@ a {
       width: 100%;
       margin-top: 0;
     }
+  }
+
+  .container-about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .container-about > div {
+    width: 700px;
+    height: 150px;
+    margin-top: 0px;
+    text-align: center;
+  }
+
+  .header-about-us {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }

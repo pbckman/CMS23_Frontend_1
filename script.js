@@ -85,29 +85,8 @@ function selectShape(shape) {
 
 
 function selectMaterial(material) {
-    var allMaterialImagesRectangular = document.querySelectorAll('#materialImagesRectangular .img-material-option');
-    allMaterialImagesRectangular.forEach(function(img) {
-        img.classList.remove('selected');
-    });
-
-    var selectedMaterialImageRectangular = document.querySelector('#materialImagesRectangular img[alt="' + material + '"]');
-    if (selectedMaterialImageRectangular) {
-        selectedMaterialImageRectangular.classList.add('selected');
-    }
-
-    var allMaterialImagesL = document.querySelectorAll('#materialImagesL .img-material-option');
-    allMaterialImagesL.forEach(function(img) {
-        img.classList.remove('selected');
-    });
-
-    var selectedMaterialImageL = document.querySelector('#materialImagesL img[alt="' + material + '"]');
-    if (selectedMaterialImageL) {
-        selectedMaterialImageL.classList.add('selected');
-    }
-
-    // Uppdatera det gömda fältet med valt material
     document.getElementById('selectedMaterial').value = material;
-
+    
     document.addEventListener('click', function (event) {
         if (event.target.nodeName == "IMG") {
             var allImages = document.querySelectorAll('img');
