@@ -70,29 +70,21 @@ function selectShape(shape) {
         calculateButton.style.display = 'none';
         calculateButtonL.style.display = 'block';
     }
-}
 
-
-function selectMaterial(material) {
-  document.getElementById('selectedMaterial').value = material;
-}
-
-
-
-function selectShapeAddBorder(shape) {
-    // Ta bort klassen från alla bilder
-    var allImages = document.querySelectorAll('.img-shape-option');
-    allImages.forEach(function(img) {
-        img.classList.remove('selected');
+    document.addEventListener('click', function (event) {
+        if (event.target.nodeName == "IMG") {
+            var allImages = document.querySelectorAll('img');
+            allImages.forEach(function (img) {
+                img.style.border = "none";
+            });
+    
+            event.target.style.border = "2px solid yellow";
+        }
     });
-
-    // Lägg till klassen på den valda bilden
-    var selectedImage = document.getElementById('img-' + shape);
-    selectedImage.classList.add('selected');
 }
 
+
 function selectMaterial(material) {
-    // För rektangulär altan
     var allMaterialImagesRectangular = document.querySelectorAll('#materialImagesRectangular .img-material-option');
     allMaterialImagesRectangular.forEach(function(img) {
         img.classList.remove('selected');
@@ -103,7 +95,6 @@ function selectMaterial(material) {
         selectedMaterialImageRectangular.classList.add('selected');
     }
 
-    // För L-formad altan
     var allMaterialImagesL = document.querySelectorAll('#materialImagesL .img-material-option');
     allMaterialImagesL.forEach(function(img) {
         img.classList.remove('selected');
@@ -116,4 +107,15 @@ function selectMaterial(material) {
 
     // Uppdatera det gömda fältet med valt material
     document.getElementById('selectedMaterial').value = material;
+
+    document.addEventListener('click', function (event) {
+        if (event.target.nodeName == "IMG") {
+            var allImages = document.querySelectorAll('img');
+            allImages.forEach(function (img) {
+                img.style.border = "none";
+            });
+    
+            event.target.style.border = "2px solid yellow";
+        }
+    });
 }

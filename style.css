@@ -19,8 +19,8 @@ body {
 
 .selected {
     border: 2px solid #3498db;
+    box-sizing: border-box;
 }
-
 
 a {
     text-transform: uppercase;
@@ -88,11 +88,7 @@ a {
     font-family: Monaco, monospace, 'Courier New', Courier, monospace;
 }
 
-
-.img-material-option {
-    cursor: pointer;
-}
-
+.img-material-option,
 .img-shape-option {
     cursor: pointer;
 }
