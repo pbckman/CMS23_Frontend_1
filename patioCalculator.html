@@ -1,110 +1,103 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="UTF-8" />
-    <title>TrallRäknaren</title>
-    <link rel="stylesheet" href="style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <title>TrallRäknaren</title>
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        .img-material-option {
-            width: 200px;
-            height: auto;
-        }
-
-    </style>
+  <style>
+    .img-material-option {
+      width: 200px;
+      height: auto;
+    }
+  </style>
 </head>
+
 <body>
-    <div class="navbar">
-        <div class="nav-left">
-          <div class="nav-item"><a href="index.html" >Hem</a></div>
-          <div class="nav-item"><a href="patioCalculator.html" class="active" >TrallRäknaren</a></div>
-        </div>
-        <a href="index.html"  class="svg-container">
-            <svg xmlns="http://www.w3.org/2000/svg" class="svgn" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                <path d="M20 11l-8 -8l-9 9h2v7a2 2 0 0 0 2 2h5" />
-                <path d="M9 21v-6a2 2 0 0 1 2 -2h2c.325 0 .631 .077 .902 .215" />
-                <path d="M16 22s0 -2 3 -4" />
-                <path d="M19 21a3 3 0 0 1 0 -6h3v3a3 3 0 0 1 -3 3z" />
-              </svg>
-            </a>
-        <div class="nav-right">
-          <div class="nav-item"><a href="contactUsPage.html" >Kontakta oss</a></div>
-          <div class="nav-item"><a href="aboutUs.html">Om oss</a></div>
-        </div>
-      </div>
+  <div class="navbar">
+    <div class="nav-left">
+      <div class="nav-item"><a href="index.html">Hem</a></div>
+      <div class="nav-item"><a href="patioCalculator.html" class="active">TrallRäknaren</a></div>
+    </div>
+    <a href="index.html" class="svg-container">
+      <svg xmlns="http://www.w3.org/2000/svg" class="svgn" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5"
+        stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path d="M20 11l-8 -8l-9 9h2v7a2 2 0 0 0 2 2h5" />
+        <path d="M9 21v-6a2 2 0 0 1 2 -2h2c.325 0 .631 .077 .902 .215" />
+        <path d="M16 22s0 -2 3 -4" />
+        <path d="M19 21a3 3 0 0 1 0 -6h3v3a3 3 0 0 1 -3 3z" />
+      </svg>
+    </a>
+    <div class="nav-right">
+      <div class="nav-item"><a href="contactUsPage.html">Kontakta oss</a></div>
+      <div class="nav-item"><a href="aboutUs.html">Om oss</a></div>
+    </div>
+  </div>
 
 
-        <h1 class="font">TrallRäknaren</h1>
-        <div class="calc-rekt">
-            <div class="rekt-option">
-            <p class="font">Här fyller du i dina mått om du vill ha en rektangulär altan</p>
-            <img src="trall_altan_1.png" class="img-shape-option" alt="" onclick="selectShape('trall1')">
-            </div>
-            <div class="L-option">
-                <p class="font">Här fyller du i dina mått om du vill ha en L-formad altan som t.ex. går runt ditt hus</p>
-                <img src="trall_altan_2.png" class="img-shape-option" alt="" onclick="selectShape('trall2')">
-                </div>
+  <h1 class="font">TrallRäknaren</h1>
+  <div class="calc-rekt">
+    <div class="rekt-option">
+      <p class="font">Här fyller du i dina mått om du vill ha en rektangulär altan</p>
+      <img id="img-trall1" src="Bilder\trall_altan_1.png" class="img-shape-option" alt=""
+        onclick="selectShape('trall1')">
+    </div>
+    <div class="L-option">
+      <p class="font">Här fyller du i dina mått om du vill ha en L-formad altan som t.ex. går runt ditt hus</p>
+      <img id="img-trall2" src="Bilder\trall_altan_2.png" class="img-shape-option" alt=""
+        onclick="selectShape('trall2')">
+    </div>
 
-        <label for="length">A:</label>
-        <input type="number" id="length" placeholder="Ange längd (m)">
-    
-        <label for="width">B:</label>
-        <input type="number" id="width" placeholder="Ange bredd (m)">
-            
-        <label for="material">Material:</label>
-        <div id="materialImages">
-            <img class="img-material-option" src="Bilder\tra1.jpg" alt="Tryckimpregnerad trall" onclick="selectMaterial('trä1')">
-            <img class="img-material-option" src="Bilder\tra2.jpg" alt="Trall brun VB NTR" onclick="selectMaterial('trä2')">
-            <img class="img-material-option" src="Bilder\tra3.jpg" alt="Bangkirai trall 21x145mm" onclick="selectMaterial('trä3')">
-            <img class="img-material-option" src="Bilder\tra4.jpg" alt="Bangkirai trall 45x145mm" onclick="selectMaterial('trä4')">
-        </div>
 
-        <input type="hidden" id="selectedMaterial" value="trä1">
 
-        <script>
-            function selectMaterial(material) {
-                document.getElementById('selectedMaterial').value = material;
-            }
 
-            
-        </script>
-    
-        <button onclick="calculateCost()">Beräkna kostnad</button>
-    
-        <div id="result"></div>  
-      </div>
+    <label for="material">Material:</label>
+    <div id="materialImagesRectangular">
+      <img class="img-material-option" src="Bilder\tra1.jpg" alt="Tryckimpregnerad trall" onclick="selectMaterial('trä1')">
+      <img class="img-material-option" src="Bilder\tra2.jpg" alt="Trall brun VB NTR" onclick="selectMaterial('trä2')">
+      <img class="img-material-option" src="Bilder\tra3.jpg" alt="Bangkirai trall 21x145mm" onclick="selectMaterial('trä3')">
+      <img class="img-material-option" src="Bilder\tra4.jpg" alt="Bangkirai trall 45x145mm" onclick="selectMaterial('trä4')">
+    </div>
 
-      <div class="calc-L">
+    <input type="hidden" id="selectedMaterial" value="trä1">
 
-        <label for="lengthA">A:</label>
-        <input type="number" id="lengthA" placeholder="Ange längd (m)">
-    
-        <label for="widthA">B:</label>
-        <input type="number" id="widthA" placeholder="Ange bredd (m)">
+    <div id="rektInputs">
+      <label for="length">A:</label>
+      <input type="number" id="length" placeholder="Ange längd (m)">
 
-        <label for="lengthB">C:</label>
-        <input type="number" id="lengthB" placeholder="Ange längd (m)">
-    
-        <label for="widthB">D:</label>
-        <input type="number" id="widthB" placeholder="Ange bredd (m)">
-    
-        <label for="materialL">Material:</label>
-        <div id="materialImages">
-            <img class="img-material-option material-option-marker" src="Bilder\tra1.jpg" alt="Tryckimpregnerad trall" onclick="selectMaterial('trä1')">
-            <img class="img-material-option material-option-marker" src="Bilder\tra2.jpg" alt="Trall brun VB NTR" onclick="selectMaterial('trä2')">
-            <img class="img-material-option material-option-marker" src="Bilder\tra3.jpg" alt="Bangkirai trall 21x145mm" onclick="selectMaterial('trä3')">
-            <img class="img-material-option material-option-marker" src="Bilder\tra4.jpg" alt="Bangkirai trall 45x145mm" onclick="selectMaterial('trä4')">
-        </div>
+      <label for="width">B:</label>
+      <input type="number" id="width" placeholder="Ange bredd (m)">
+      <button id="calculateButton" style="display: none;" onclick="calculateCost()">Beräkna kostnad</button>
+    </div>
 
-        <input type="hidden" id="selectedMaterial" value="trä1">
-    
-        <button onclick="calculateCostL()">Beräkna kostnad</button>
-    
-        <div id="resultL"></div>  
-      </div>
 
-      <script src="script.js"></script>
+    <div id="result"></div>
+  </div>
+
+  <div class="calc-L">
+    <div id="LInputs" style="display: none;">
+    <label for="lengthA">A:</label>
+    <input type="number" id="lengthA" placeholder="Ange längd (m)">
+
+    <label for="widthA">B:</label>
+    <input type="number" id="widthA" placeholder="Ange bredd (m)">
+
+    <label for="lengthB">C:</label>
+    <input type="number" id="lengthB" placeholder="Ange längd (m)">
+
+    <label for="widthB">D:</label>
+    <input type="number" id="widthB" placeholder="Ange bredd (m)">
+    </div>
+
+    <button id="calculateButtonL" style="display: none;" onclick="calculateCostL()">Beräkna kostnad</button>
+    <div id="resultL"></div>
+  </div>
+
+  <script src="script.js"></script>
+
 </body>
+
 </html>
